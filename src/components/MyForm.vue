@@ -1,58 +1,48 @@
 <template>
-<div>
-
+  <div>
+    <div v-bind:text="count">{{ count }}</div>
+    <h1>{{ age }}</h1>
+    <button @click="incrementcount">{{ uName }}</button>
     <div>
-    <input ref="el" type="text" placeholder="Name" v-model="name"/>
+      <input ref="el" type="text" placeholder="Name" v-model="name" />
     </div>
+    <Select/>
     <div>
-    <button @click="submitForm" 
-    v-bind:disabled="name.length==0"
-    >Submit
-</button>
+      <button @click="submitForm" v-bind:disabled="name.length == 0">
+        Submit
+      </button>
     </div>
-    </div>
+  </div>
 </template>
 
-<script>
-import {ref, onMounted,onUpdated} from "vue";
+<script setup>
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import Select from './Select.vue'
 
-export default {
-    
-    setup() {
-        console.log("The component is now set up")
-        const name= ref("");
-        const el = ref()
-        onMounted(()=>{
-        console.log("the component is rendered once and we are in the on mounted lifecycle")
-        el.value.focus();
-    })
+const name = ref("");
+const age= ref(35)
+const el = ref();
 
-    onUpdated(()=>{
-        console.log("Updated")
-        
-    })
-        
-        const submitForm= ()=>{console.log(`form submitted, name=${name.value}`)}
-        return{
-            el,
-            name,
-            submitForm
-        }
-        
-    }
+const uName = ref("Gayathri");
+
+setTimeout(() => {
+  uName.value = "Vishakan";
+  age.value=60
+}, 2000);
+
+const submitForm = () => {
+  console.log(`form submitted, name=${name.value}`);
 };
 </script>
 
 <style>
-input[type="text"]{
-    padding:10px;
-    border-style:dotted;
-    margin:10px;
+input[type="text"] {
+  padding: 10px;
+  border-style: dotted;
+  margin: 10px;
 }
-button{
-    margin-top:10px;
-   
-    
-
+button {
+  margin-top: 10px;
 }
 </style>
