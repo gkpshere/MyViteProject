@@ -1,28 +1,23 @@
 <template>
   <div>
-    <div v-bind:text="count">{{ count }}</div>
-    <h1>{{ age }}</h1>
-    <button @click="incrementcount">{{ uName }}</button>
-    <div>
-      <input ref="el" type="text" placeholder="Name" v-model="name" />
+    <div class="flex-container">
+      <button @click="count++">Increment</button>
+      <button @click="count--">Decrement</button>
     </div>
-    <Select/>
-    <div>
-      <button @click="submitForm" v-bind:disabled="name.length == 0">
-        Submit
-      </button>
-    </div>
+
+    <div class="counter-box" v-bind:text="count">{{ count }}</div>
+   
+
+
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-import { useStore } from "vuex";
-import Select from './Select.vue'
 
-const name = ref("");
-const age= ref(35)
-const el = ref();
+
+
+const count = ref(0)
 
 const uName = ref("Gayathri");
 
@@ -31,9 +26,7 @@ setTimeout(() => {
   age.value=60
 }, 2000);
 
-const submitForm = () => {
-  console.log(`form submitted, name=${name.value}`);
-};
+
 </script>
 
 <style>
@@ -42,7 +35,34 @@ input[type="text"] {
   border-style: dotted;
   margin: 10px;
 }
+
+.flex-container{
+  display: flex;
+}
+
+.flex-container > button {
+  
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.counter-box{
+  margin: 10px;
+  padding: 20px;
+  border-style: groove;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 button {
-  margin-top: 10px;
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
 }
 </style>

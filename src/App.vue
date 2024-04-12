@@ -1,11 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+
 import MyForm from './components/MyForm.vue'
 
 </script>
 
 <template>
 <div>
+<h1>Counter</h1>
+  
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
+  <MyForm/>
 
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -15,8 +19,6 @@ import MyForm from './components/MyForm.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
-  <MyForm/>
   </div>
 </template>
 
