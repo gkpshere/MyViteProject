@@ -1,9 +1,23 @@
 import { createApp } from 'vue'
 import {createStore} from 'vuex'
+import { createMemoryHistory, createRouter } from 'vue-router'
 import axios from "axios"
 import './style.css'
 import App from './App.vue'
 
+
+import Counter from './components/Counter.vue'
+
+
+const routes = [
+   
+    { path: '/counter', component: Counter },
+  ]
+  
+  const router = createRouter({
+    history: createMemoryHistory(),
+    routes,
+  })
 
 const store= createStore({
     state(){
@@ -40,6 +54,10 @@ const store= createStore({
 
 // Create App
 const app = createApp(App)
+
+//Router
+app.use(router)
+
 
 // Install Store instance as a plugin
 app.use(store)
