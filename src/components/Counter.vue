@@ -39,7 +39,7 @@ const count = ref(0)
 
 .counter {
   margin-top: 100px;
- padding-bottom: 300px;
+ padding-bottom: 100px;
 }
 
 .flex-container {

@@ -7,11 +7,14 @@ import App from './App.vue'
 
 
 import Counter from './components/Counter.vue'
+import MyForm from './components/MyForm.vue'
+import Home from './components/Home.vue'
 
 
 const routes = [
-   
+    { path: '/', component: Home },
     { path: '/counter', component: Counter },
+    { path: '/form', component: MyForm }
   ]
   
   const router = createRouter({
@@ -36,20 +39,35 @@ const store= createStore({
         SET_OBJ(state,data)
         {
             state.result=data;
+        },
+        OBJ_CREATED(state,data)
+        {
+            state.posted=data;
         }
     },
     actions: {
-       async fetchObjects({commit}){
-        try{
-            const response = await axios.get("https://api.restful-api.dev/objects")
-            commit("SET_OBJ", response.data)
-
-        }
-        catch(e){
-            console.log(e)
-        }
-       
-      }}
+        async fetchObjects({commit}){
+            try{
+                const response = await axios.get("https://api.restful-api.dev/objects")
+                commit("SET_OBJ", response.data)
+    
+            }
+            catch(e){
+                console.log(e)
+            }
+           
+          }},
+          async createProduct({commit},data){
+            try{
+                const response = await axios.post("https://api.restful-api.dev/objects",data)
+                commit("OBJ_CREATED", response.data)
+    
+            }
+            catch(e){
+                console.log(e)
+            }
+        
+          }
 })
 
 // Create App

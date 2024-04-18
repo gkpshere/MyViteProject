@@ -14,13 +14,16 @@
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/counter">Counter</RouterLink>
+      <RouterLink to="/form">Form</RouterLink>
     </nav>
     <!-- <p>
       <strong>Current route path:</strong> {{ $route.fullPath }}
     </p> -->
 
     <main>
+      
       <RouterView />
+
     </main>
     <div class="footer">
       <a href="https://vitejs.dev" target="_blank">
@@ -75,7 +78,7 @@ nav>a+a {
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
