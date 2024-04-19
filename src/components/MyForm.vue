@@ -1,39 +1,70 @@
 <template>
-  <div>
-    <div v-bind:text="count">{{ count }}</div>
-    <h1>{{ age }}</h1>
-    <button @click="incrementcount">{{ uName }}</button>
-    <div>
-      <input ref="el" type="text" placeholder="Name" v-model="name" />
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        Add Product
+      </div>
+      <div class="card-body">
+        <form @submit.prevent="handleSubmit">
+          <div class="form-group">
+            <label for="exampleInputname1">Name</label>
+            <input type="text" required v-model="formData.productName" class="form-control" id="exampleInputname1"
+              aria-describedby="nameHelp" placeholder="Enter name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPrice">Price</label>
+            <input type="number" v-model="formData.productPrice" class="form-control" id="exampleInputPrice1" placeholder="Price">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputModel">CPU Model</label>
+            <input type="text" v-model="formData.productCPUModel" class="form-control" id="exampleInputModel" placeholder="Model">
+          </div>
+
+
+
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
     </div>
-    <Select/>
-    <div>
-      <button @click="submitForm" v-bind:disabled="name.length == 0">
-        Submit
-      </button>
+
+
+    <div class="card">
+      <div class="card-header">
+        Products
+      </div>
+      <div class="card-body">
+
+        <Select />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useStore } from "vuex";
-import Select from './Select.vue'
+import {ref} from 'vue';
+import axios from "axios"
+import { useStore,mapActions } from 'vuex'
+import Select from "./Select.vue"
 
-const name = ref("");
-const age= ref(35)
-const el = ref();
+const store = useStore();
 
-const uName = ref("Gayathri");
 
-setTimeout(() => {
-  uName.value = "Vishakan";
-  age.value=60
-}, 2000);
 
-const submitForm = () => {
-  console.log(`form submitted, name=${name.value}`);
-};
+const formData= ref({
+      productName:"",
+      productPrice:0,
+      productCPUModel:""
+      
+})
+
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  const response = await axios.post("https://api.restful-api.dev/objects",formData.value)
+  console.log(response)
+}
+
 </script>
 
 <style>
@@ -42,7 +73,36 @@ input[type="text"] {
   border-style: dotted;
   margin: 10px;
 }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container>button {
+
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.counter-box {
+  margin: 10px;
+  padding: 20px;
+  border-style: groove;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 button {
-  margin-top: 10px;
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
 }
 </style>
