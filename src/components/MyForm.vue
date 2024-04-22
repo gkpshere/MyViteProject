@@ -93,9 +93,8 @@ input[type="text"] {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-button {
+/* button {
   background-color: #04AA6D;
-  /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -104,5 +103,5 @@ button {
   display: inline-block;
   font-size: 16px;
 
-}
+} */
 </style>

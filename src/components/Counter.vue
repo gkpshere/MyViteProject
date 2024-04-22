@@ -4,8 +4,11 @@
 
     <div class="flex-container">
       <div class="item">
-        <button @click="count++">Increment</button>
-      <button @click="count--">Decrement</button>
+        <Button icon="pi pi-check" severity="info"  label="Increment" @click="count++"/>
+
+        <Button icon="pi pi-check" label="Decrement" @click="count++"/>
+        
+      <!-- <button @click="count--">Decrement</button> -->
       </div>
 
       <div class="item">
@@ -24,6 +27,9 @@
   
 <script setup>
 import { ref } from "vue";
+
+import Button from 'primevue/button';
+
 
 const count = ref(0)
 
@@ -58,12 +64,12 @@ const count = ref(0)
  
 }
 
-.flex-container>button {
+/* .flex-container>button {
   margin: 0 auto;
   margin: 10px;
   padding: 20px;
   font-size: 30px;
-}
+} */
 
 .counter-box {
   margin: 10px;
@@ -75,17 +81,18 @@ const count = ref(0)
   
 }
 
-button {
+/* button {
   background-color: #04AA6D;
-  /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  
   font-size: 16px;
+} */
 
-}
+
+
+
 </style>
   

@@ -4,6 +4,11 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import axios from "axios"
 import './style.css'
 import App from './App.vue'
+import PrimeVue from 'primevue/config';
+
+//in main.js
+import 'primevue/resources/themes/aura-dark-pink/theme.css'
+
 
 
 import Counter from './components/Counter.vue'
@@ -79,6 +84,9 @@ app.use(router)
 
 // Install Store instance as a plugin
 app.use(store)
+
+// PrimeVue
+app.use(PrimeVue)
 
 // Mount the app the the html element
 app.mount('#app')
